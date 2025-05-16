@@ -1,6 +1,5 @@
-// main.cpp
+#include <windows.h>
 #include <iostream>
-
 #ifdef _WIN32
 #define IMPORT __declspec(dllimport)
 #else
@@ -8,15 +7,16 @@
 #endif
 
 extern "C" {
-    IMPORT void hello();
-    IMPORT int add(int a, int b);
+    IMPORT void mysend(const char* message);
+    IMPORT void send_cmd1();
+    IMPORT void send_number(int number);
 }
-
 int main() {
-    hello();
-    
-    int result = add(5, 3);
-    std::cout << "5 + 3 = " << result << std::endl;
+
+    // Вызовы функций — вывод будет в консоль терминала
+    mysend("закрося");
+    send_cmd1();
+    send_number(123);
 
     return 0;
 }
